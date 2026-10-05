@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anu | Web Developer, App Developer & Freelancer</title>
+<meta name="description" content="Anu builds modern websites and applications that combine clean design, smooth experiences, and practical functionality.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0e14;--surf:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);--tx:#eceef6;--mut:#9a9fb3;--a:#8c8fff;--b:#46cdf0;--grad:linear-gradient(120deg,var(--a),var(--b));--r:22px;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--tx);font:400 1.05rem/1.65 Figtree,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:"Bricolage Grotesque",Figtree,sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--b);outline-offset:3px}
+.wrap{width:min(1180px,92%);margin:auto}section{padding:clamp(70px,11vw,130px) 0;position:relative}
+h2{font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:800;max-width:15ch}
+.lead{color:var(--mut);max-width:52ch;margin-top:18px}
+.glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(140,143,255,.16),transparent 65%);transform:translate(-50%,-50%);left:50%;top:30%}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;padding:18px 0;transition:.4s var(--ease)}
+nav.on{background:rgba(13,14,20,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:12px 0}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:800;font-size:1.5rem;letter-spacing:.04em}
+.links{display:flex;gap:6px;list-style:none;padding:0}
+.links a{padding:8px 14px;border-radius:99px;color:var(--mut);font-size:.95rem;transition:.3s}
+.links a:hover,.links a.act{color:var(--tx);background:var(--surf)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:99px;font-weight:600;border:1px solid var(--line);background:var(--surf);cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s,background .3s}
+.btn:hover{transform:translateY(-3px)}.btn.p{background:var(--grad);color:#0b0c12;border:0;box-shadow:0 10px 30px -10px rgba(140,143,255,.7)}
+.btn.sm{padding:9px 20px;font-size:.92rem}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:12px;width:44px;height:44px;cursor:pointer}
+.burger i{display:block;width:18px;height:2px;background:var(--tx);margin:4px auto;transition:.3s}
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 70px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(3.2rem,8.5vw,7rem);font-weight:800}
+.hero h1 span{display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;min-height:1.1em}
+.hero h1 span:after{content:"";display:inline-block;width:3px;height:.8em;background:var(--b);margin-left:6px;animation:blink 1s steps(2) infinite}
+.sub{margin:26px 0 8px;font-weight:600;color:var(--tx)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.vis{position:relative;height:460px}
+.card{position:absolute;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(10px);box-shadow:0 30px 60px -30px #000;animation:fl 7s ease-in-out infinite}
+.win{left:0;top:30px;width:78%;padding:16px}.win .d{display:flex;gap:6px;margin-bottom:14px}.win .d i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.win code{display:block;font:500 .82rem/1.8 ui-monospace,Menlo,monospace;color:var(--mut)}.win b{color:var(--a);font-weight:500}.win u{color:var(--b);text-decoration:none}
+.ph{right:2%;top:150px;width:34%;height:270px;padding:12px;animation-delay:-2s;border-radius:28px}.ph div{height:40%;border-radius:12px;background:var(--grad);opacity:.85;margin-bottom:10px}.ph i{display:block;height:9px;border-radius:9px;background:var(--line);margin-bottom:9px}
+.chip{padding:10px 18px;font-weight:600;font-size:.9rem;animation-delay:-4s}.c1{left:6%;bottom:30px}.c2{right:10%;top:14px;animation-delay:-1s}
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}.rv.in{opacity:1;transform:none}
+/* about */
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+.stat{padding:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--surf)}
+.stat b{font:800 2.6rem "Bricolage Grotesque",sans-serif;display:block}.stat span{color:var(--mut);font-size:.9rem}
+.abvis{aspect-ratio:1;border-radius:36px;border:1px solid var(--line);background:radial-gradient(circle at 30% 20%,rgba(140,143,255,.35),transparent 55%),radial-gradient(circle at 80% 90%,rgba(70,205,240,.25),transparent 50%),var(--surf);display:grid;place-items:center;font:800 clamp(5rem,14vw,9rem) "Bricolage Grotesque";color:rgba(255,255,255,.9)}
+.abvis small{display:block;font:500 1rem Figtree;color:var(--mut);text-align:center;margin-top:-10px}
+/* grids */
+.grid{display:grid;gap:16px;margin-top:50px}.skills{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.svc{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.tile{padding:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--surf);transition:transform .4s var(--ease),border-color .3s,background .3s}
+.tile:hover{transform:translateY(-6px);border-color:rgba(140,143,255,.5);background:rgba(140,143,255,.07)}
+.ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:var(--grad);color:#0b0c12;font:800 .85rem "Bricolage Grotesque";margin-bottom:20px}
+.ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{font-size:1.35rem;margin-bottom:8px}.tile p{color:var(--mut);font-size:.97rem}
+/* projects */
+.track{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:60px 4% 50px;margin-top:10px;scrollbar-width:thin}
+.pj{flex:0 0 min(460px,82vw);scroll-snap-align:center;position:relative;height:540px;border-radius:30px;overflow:hidden;cursor:pointer;border:1px solid var(--line);transition:transform .5s var(--ease)}
+.pj:nth-child(even){margin-top:50px}.pj:hover,.pj:focus-visible{transform:translateY(-12px)}
+.pj .img{position:absolute;inset:0;transition:transform .8s var(--ease);background:linear-gradient(150deg,hsl(var(--h),70%,55%),hsl(calc(var(--h) + 60),60%,22%))}
+.pj .img:after{content:"";position:absolute;left:14%;right:14%;top:12%;height:38%;border-radius:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);box-shadow:0 20px 0 -8px rgba(255,255,255,.08)}
+.pj:hover .img{transform:scale(1.08)}
+.pj .info{position:absolute;inset:auto 0 0;padding:28px;background:linear-gradient(transparent,rgba(8,9,14,.92) 45%);transform:translateY(calc(100% - 118px));transition:transform .55s var(--ease)}
+.pj:hover .info,.pj:focus-visible .info{transform:none}.pj h3{font-size:1.7rem}.pj p{color:#c9cce0;margin:8px 0 14px;font-size:.96rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tags span{font-size:.8rem;padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.07)}
+.acts{display:flex;gap:10px;margin-top:18px;opacity:0;transition:opacity .4s .1s}.pj:hover .acts,.pj:focus-visible .acts{opacity:1}
+/* process */
+.tl{position:relative;margin-top:60px;padding-left:46px}.tl:before,.tl .fill{content:"";position:absolute;left:14px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .fill{background:var(--grad);height:0;bottom:auto;transition:height .15s linear}
+.st{position:relative;padding:0 0 46px}.st:last-child{padding:0}.st:before{content:"";position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--line);transition:.4s}.st.in:before{border-color:var(--b);background:var(--b);box-shadow:0 0 0 6px rgba(70,205,240,.15)}
+.st em{font:700 .95rem "Bricolage Grotesque";color:var(--b);font-style:normal}.st h3{font-size:1.9rem;margin:2px 0 4px}.st p{color:var(--mut)}
+/* freelance */
+.free{background:#eceef6;color:#0d0e14;border-radius:44px;margin:0 2%;text-align:center;padding:clamp(70px,10vw,130px) 5%;overflow:hidden;position:relative}
+.free:before{content:"";position:absolute;width:60vmax;height:60vmax;left:-20%;top:-60%;background:radial-gradient(circle,rgba(140,143,255,.45),transparent 60%);animation:drift 14s ease-in-out infinite alternate}
+.free>*{position:relative}.free h2{max-width:14ch;margin:auto;font-size:clamp(2.6rem,7.5vw,6rem)}.free p{max-width:50ch;margin:22px auto 38px;color:#454a60}
+.big{padding:22px 44px;font-size:1.2rem;background:#0d0e14;color:#fff;border:0;border-radius:99px;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .3s}.big:hover{box-shadow:0 20px 40px -12px rgba(13,14,20,.6)}
+/* contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px}
+form{display:grid;gap:14px}label{font-size:.9rem;color:var(--mut);display:grid;gap:6px}
+input,select,textarea{width:100%;padding:15px 18px;border-radius:14px;border:1px solid var(--line);background:var(--surf);transition:border-color .3s,background .3s}
+select option{background:#15161e}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--a);background:rgba(140,143,255,.07)}
+textarea{min-height:140px;resize:vertical}.err{color:#ff8a8a;font-size:.85rem;min-height:1em}#ok{color:var(--b);font-weight:600;min-height:1.5em}
+.soc{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.soc a{padding:10px 20px;border:1px solid var(--line);border-radius:99px;transition:.3s}.soc a:hover{background:var(--surf);transform:translateY(-3px)}
+footer{border-top:1px solid var(--line);padding:50px 0;margin-top:90px;text-align:center;color:var(--mut)}footer .logo{color:var(--tx);display:block}
+footer ul{list-style:none;padding:0;display:flex;justify-content:center;flex-wrap:wrap;gap:8px 26px;margin:22px 0}footer a:hover{color:var(--tx)}
+/* modal */
+.md{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:rgba(5,6,10,.75);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:.4s}.md.open{opacity:1;visibility:visible}
+.box{width:min(860px,100%);max-height:92vh;overflow:auto;background:#12131b;border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,44px);transform:translateY(40px) scale(.97);transition:transform .5s var(--ease)}.md.open .box{transform:none}
+.box h3{font-size:2.4rem;margin-bottom:10px}.box h4{margin:24px 0 6px;font-size:1.05rem}.box p,.box li{color:var(--mut)}.box ul{padding-left:20px}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}.shots div{aspect-ratio:4/3;border-radius:14px;background:linear-gradient(150deg,hsl(var(--h),70%,55%),hsl(calc(var(--h) + 60),60%,22%))}
+.x{float:right;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surf);cursor:pointer;font-size:1.2rem}
+@keyframes fl{50%{transform:translateY(-14px)}}@keyframes blink{to{opacity:0}}@keyframes drift{to{transform:translate(30%,20%)}}
+/* responsive */
+@media(max-width:900px){
+.links,nav>.wrap>.btn{display:none}.burger{display:block}
+.links.open{display:flex;position:fixed;inset:0;background:rgba(13,14,20,.97);flex-direction:column;justify-content:center;align-items:center;gap:10px;z-index:-1}.links.open a{font:700 2rem "Bricolage Grotesque";color:var(--tx)}
+.hero .wrap,.about,.contact{grid-template-columns:1fr}.vis{height:340px;order:-1;margin-top:10px}.hero{padding-top:100px}
+.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:16px}.stat b{font-size:1.9rem}.pj{height:480px}.pj:nth-child(even){margin-top:0}.free{border-radius:28px}}
+@media(hover:none){.pj .info{transform:none}.acts{opacity:1}.glow{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div><div class="glow" id="glow"></div>
+<nav id="nav"><div class="wrap"><a href="#home" class="logo">ANU</a>
+<ul class="links" id="links"></ul>
+<a href="#contact" class="btn p sm">Let's Talk</a>
+<button class="burger" id="bg" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button></div></nav>
+
+<main>
+<section class="hero" id="home"><div class="wrap">
+<div><h1>Hi, I'm Anu.<span id="rot">Web Developer</span></h1>
+<p class="sub">Web Developer • App Developer • Freelancer</p>
+<p class="lead" style="margin-top:0">I build modern websites and applications that combine clean design, smooth experiences, and practical functionality.</p>
+<div class="cta"><a class="btn p" href="#projects">View My Work</a><a class="btn" href="#contact">Let's Work Together</a></div></div>
+<div class="vis" aria-hidden="true" id="vis">
+<div class="card win"><div class="d"><i></i><i></i><i></i></div><code><b>const</b> idea = <u>"your project"</u>;</code><code><b>function</b> build(idea) {</code><code>&nbsp;&nbsp;return <u>design</u> + <u>code</u>;</code><code>}</code></div>
+<div class="card ph"><div></div><i></i><i></i><i style="width:60%"></i></div>
+<div class="card chip c1">Responsive</div><div class="card chip c2">Fast &amp; clean</div></div>
+</div></section>
+
+<section id="about"><div class="wrap about"><div class="rv">
+<h2>Turning Ideas Into Digital Experiences.</h2>
+<p class="lead">I'm Anu, a web developer, app developer, and freelancer who enjoys creating modern, responsive, user-friendly digital products. I care about clean interfaces, smooth interactions, and code that does its job well.</p>
+<div class="stats" id="stats"></div></div>
+<div class="rv" style="--d:.15s"><div class="abvis"><div>A<small>Full stack developer</small></div></div></div></div></section>
+
+<section id="skills"><div class="wrap"><h2 class="rv">Tools I build with.</h2><div class="grid skills" id="skills"></div></div></section>
+<section id="services"><div class="wrap"><h2 class="rv">What I Can Build For You</h2><div class="grid svc" id="svc"></div></div></section>
+<section id="projects"><div class="wrap"><h2 class="rv">Selected Work</h2><p class="lead rv">Sample projects. Replace them with your own in the CONFIG block at the bottom of this file.</p></div><div class="track" id="track"></div></section>
+<section id="process"><div class="wrap"><h2 class="rv">How I work.</h2><div class="tl" id="tl"><div class="fill" id="fill"></div></div></div></section>
+
+<div class="free rv" id="freelance"><h2>Have an idea? Let's build it.</h2><p>Whether you need a website, application, or a custom digital experience, let's turn your idea into something real.</p><a href="#contact" class="big" id="mag" style="display:inline-block">Start a Project →</a></div>
+
+<section id="contact"><div class="wrap contact"><div class="rv"><h2>Let's create something meaningful together.</h2><div class="soc" id="soc"></div></div>
+<form id="f" class="rv" novalidate style="--d:.15s">
+<label>Name<input id="n" name="name" autocomplete="name" required><span class="err"></span></label>
+<label>Email<input id="e" type="email" autocomplete="email" required><span class="err"></span></label>
+<label>Project Type<select id="t"><option>Website</option><option>Web app</option><option>Mobile app</option><option>Website improvement</option><option>Something else</option></select></label>
+<label>Message<textarea id="m" required></textarea><span class="err"></span></label>
+<button class="btn p" type="submit" style="justify-self:start">Send Message</button><div id="ok" role="status"></div></form></div></section>
+</main>
+
+<footer><div class="wrap"><span class="logo">ANU</span><p>Web Developer • App Developer • Freelancer</p>
+<ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
+<p>© 2026 Anu. All rights reserved.</p></div></footer>
+
+<div class="md" id="md" role="dialog" aria-modal="true" aria-label="Project details"><div class="box" id="box"></div></div>
+
+<script>
+/* ===== EDIT YOUR CONTENT HERE (replace every TODO) ===== */
+const C={
+ email:"your@email.com", /* TODO: your real email */
+ socials:[["GitHub","#"],["LinkedIn","#"],["Email","mailto:your@email.com"]], /* TODO: real links */
+ roles:["Web Developer","App Developer","Freelancer"],
+ stats:[[10,"+","Projects"],[3,"+","Development Areas"],[100,"%","Client Focus"]], /* TODO: placeholder numbers */
+ skills:[["HTML","HTML","Semantic, accessible page structure."],["CSS","CSS","Responsive layouts and polished styling."],["JS","JavaScript","Interactive, dynamic interfaces."],["Re","React.js","Component-based user interfaces."],["Py","Python","Scripting and backend logic."],["Fl","Flask","Lightweight Python web apps and APIs."]],
+ services:[["globe","Web Development","Modern, responsive, fast, and user-friendly websites."],["phone","App Development","Functional and modern applications designed around user needs."],["layout","UI Implementation","Turning designs and ideas into polished, responsive interfaces."],["sliders","Website Improvement","Improving existing websites for better usability, responsiveness, and appearance."],["spark","Freelance Development","Custom digital solutions for individuals, startups, and businesses."]],
+ projects:[ /* TODO: replace with real projects */
+  {t:"Sample Project One",d:"Short description of your first project.",tags:["HTML","CSS","JavaScript"],h:250,o:"A short overview of what this project is.",p:"The problem this project solves.",s:"How you solved it.",f:["Key feature one","Key feature two","Key feature three"],live:"#",git:"#"},
+  {t:"Sample Project Two",d:"Short description of your second project.",tags:["React","Flask","Python"],h:190,o:"A short overview of what this project is.",p:"The problem this project solves.",s:"How you solved it.",f:["Key feature one","Key feature two","Key feature three"],live:"#",git:"#"},
+  {t:"Sample Project Three",d:"Short description of your third project.",tags:["React","JavaScript"],h:320,o:"A short overview of what this project is.",p:"The problem this project solves.",s:"How you solved it.",f:["Key feature one","Key feature two","Key feature three"],live:"#",git:"#"}],
+ process:[["Discover","Understand the idea and requirements."],["Plan","Plan the structure, features, and user experience."],["Design","Create a clean and intuitive interface."],["Develop","Build the website or application."],["Test","Check responsiveness, functionality, and performance."],["Launch","Deliver the final product."]]
+};
+/* ===== END OF CONTENT ===== */
+const $=s=>document.querySelector(s),I={globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>',phone:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',layout:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/>',sliders:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>',spark:'<path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/>'};
+const secs=["home","about","skills","services","projects","process","contact"];
+$("#links").innerHTML=secs.map(s=>`<li><a href="#${s}">${s[0].toUpperCase()+s.slice(1)}</a></li>`).join("");
+$("#stats").innerHTML=C.stats.map(([n,u,l])=>`<div class="stat"><b data-n="${n}" data-u="${u}">0${u}</b><span>${l}</span></div>`).join("");
+$("#skills").innerHTML=C.skills.map(([k,n,d],i)=>`<div class="tile rv" style="--d:${i*.07}s"><div class="ico">${k}</div><h3>${n}</h3><p>${d}</p></div>`).join("");
+$("#svc").innerHTML=C.services.map(([k,n,d],i)=>`<div class="tile rv" style="--d:${i*.07}s"><div class="ico"><svg viewBox="0 0 24 24">${I[k]}</svg></div><h3>${n}</h3><p>${d}</p></div>`).join("");
+$("#track").innerHTML=C.projects.map((p,i)=>`<article class="pj" tabindex="0" data-i="${i}" style="--h:${p.h}"><div class="img"></div><div class="info"><h3>${p.t}</h3><p>${p.d}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="acts"><a class="btn p sm" href="${p.live}" target="_blank" rel="noopener">Live Demo</a><a class="btn sm" href="${p.git}" target="_blank" rel="noopener">GitHub</a></div></div></article>`).join("");
+$("#tl").insertAdjacentHTML("beforeend",C.process.map(([t,d],i)=>`<div class="st"><em>0${i+1}</em><h3>${t}</h3><p>${d}</p></div>`).join(""));
+$("#soc").innerHTML=C.socials.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("");
+/* nav */
+const nav=$("#nav"),links=$("#links"),bg=$("#bg");
+bg.onclick=()=>{const o=links.classList.toggle("open");bg.setAttribute("aria-expanded",o);document.body.style.overflow=o?"hidden":""};
+links.onclick=e=>{if(e.target.tagName=="A"){links.classList.remove("open");document.body.style.overflow="";bg.setAttribute("aria-expanded",false)}};
+/* rotating text */
+let ri=0,ci=0,del=false;const rot=$("#rot");
+(function tick(){const w=C.roles[ri];ci+=del?-1:1;rot.textContent=w.slice(0,ci);let t=del?45:85;
+if(!del&&ci==w.length){del=true;t=1500}else if(del&&ci==0){del=false;ri=(ri+1)%C.roles.length;t=300}setTimeout(tick,t)})();
+/* scroll effects */
+const fill=$("#fill"),tl=$("#tl");
+function onScroll(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+$("#bar").style.width=(y/h*100)+"%";nav.classList.toggle("on",y>30);
+const r=tl.getBoundingClientRect(),p=Math.min(Math.max((innerHeight*.6-r.top)/r.height,0),1);fill.style.height=(p*(r.height-12))+"px"}
+addEventListener("scroll",onScroll,{passive:true});onScroll();
+/* reveal, counters, steps, active link */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add("in");
+if(e.target.dataset.n){const el=e.target,n=+el.dataset.n,u=el.dataset.u,t0=performance.now();
+(function f(t){const k=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3)))+u;if(k<1)requestAnimationFrame(f)})(t0)}
+io.unobserve(e.target)}),{threshold:.2});
+document.querySelectorAll(".rv,.st,.stat b").forEach(el=>io.observe(el));
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.querySelectorAll("a").forEach(a=>a.classList.toggle("act",a.getAttribute("href")=="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(s=>so.observe($("#"+s)));
+/* cursor glow + hero parallax + magnetic button (pointer devices only) */
+if(matchMedia("(hover:hover)").matches){const g=$("#glow"),v=$("#vis"),m=$("#mag");
+addEventListener("pointermove",e=>{g.style.left=e.clientX+"px";g.style.top=e.clientY+"px";const x=(e.clientX/innerWidth-.5)*14,y=(e.clientY/innerHeight-.5)*14;v.style.transform=`translate(${x}px,${y}px)`});
+m.addEventListener("pointermove",e=>{const r=m.getBoundingClientRect();m.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.4}px)`});
+m.addEventListener("pointerleave",()=>m.style.transform="")}
+/* project modal */
+const md=$("#md"),box=$("#box");let last;
+function openP(i){const p=C.projects[i];last=document.activeElement;
+box.innerHTML=`<button class="x" aria-label="Close">×</button><h3>${p.t}</h3><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="shots" style="--h:${p.h}"><div></div><div style="--h:${p.h+30}"></div><div style="--h:${p.h+60}"></div></div><h4>Overview</h4><p>${p.o}</p><h4>Problem</h4><p>${p.p}</p><h4>Solution</h4><p>${p.s}</p><h4>Key features</h4><ul>${p.f.map(f=>`<li>${f}</li>`).join("")}</ul><div class="cta"><a class="btn p sm" href="${p.live}" target="_blank" rel="noopener">Live Website</a><a class="btn sm" href="${p.git}" target="_blank" rel="noopener">GitHub Repository</a></div>`;
+md.classList.add("open");document.body.style.overflow="hidden";box.scrollTop=0;box.querySelector(".x").focus()}
+function closeP(){md.classList.remove("open");document.body.style.overflow="";last&&last.focus()}
+$("#track").addEventListener("click",e=>{if(e.target.closest("a"))return;const c=e.target.closest(".pj");if(c)openP(+c.dataset.i)});
+$("#track").addEventListener("keydown",e=>{if(e.key=="Enter"&&e.target.classList.contains("pj"))openP(+e.target.dataset.i)});
+md.addEventListener("click",e=>{if(e.target==md||e.target.closest(".x"))closeP()});
+addEventListener("keydown",e=>{if(e.key=="Escape"&&md.classList.contains("open"))closeP()});
+/* contact form (opens the visitor's email app; no backend needed) */
+$("#f").onsubmit=e=>{e.preventDefault();let ok=true;
+[["#n","Please enter your name."],["#e","Please enter a valid email."],["#m","Please write a short message."]].forEach(([s,msg])=>{const el=$(s),bad=!el.value.trim()||(s=="#e"&&!/^\S+@\S+\.\S+$/.test(el.value));el.nextElementSibling.textContent=bad?msg:"";if(bad)ok=false});
+if(!ok)return;const b=encodeURIComponent(`${$("#m").value}\n\nFrom: ${$("#n").value} (${$("#e").value})`);
+location.href=`mailto:${C.email}?subject=${encodeURIComponent($("#t").value+" project")}&body=${b}`;$("#ok").textContent="Thanks! Your email app should open with the message ready to send."};
+</script>
+</body>
+</html>
